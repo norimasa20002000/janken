@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/sample.css">
+    <title>じゃんけん</title>
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <img id="sfg" class="none" src="img/titlelogo.png" alt="">
+        </div>
+    </header>
+
+    <main>
+        <div class="you">
+            <div class="chara1">
+                <img src="img/player.png" alt="">
+            </div>
+            <div class="hhand">
+                <div id="gu_btn" class="select-hand"><img id="hand0" src="img/gu.png"></div>
+                <div id="cho_btn" class="select-hand"><img id="hand2" src="img/ch.png"></div>
+                <div id="par_btn" class="select-hand"><img id="hand5" src="img/pa.png"></div>
+            </div>
+            <div class="rhand"><img src="img/ryuhand.png"></div>
+        </div>
+        <div class="result">
+            <div class="result-logo"><img src="img/result.png"></div>
+            <div id="judgment"></div>
+        </div>
+        <div class="enemy">
+            <div class="chara2">
+                <img src="img/enemy.png" alt="">
+            </div>
+            <div id="chand"></div>
+            <div class="khand"><img src="img/kenhand.png"></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class=griko>
+            <div class="chara3">
+                <div class="ryu">
+                    <img src="img/player.png" alt="">
+                </div>
+                <div id="rgscript" class="script none">
+                    <div class="frase">
+                        <p>GRIKO！</p>
+                    </div>
+                </div>
+                <div id="rcscript" class="script none">
+                    <div class="frase">
+                        <p>CHOCORATE!</p>
+                    </div>
+                </div>
+                <div id="rpscript" class="script none">
+                    <div class="frase">
+                        <p>PAINAPPLE!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stairs">
+                <div class="step0">
+                    START
+                </div>
+                <div class="step1">
+                    1
+                </div>
+                <div class="step2">
+                    2
+                </div>
+                <div class="step3">
+                    3
+                </div>
+                <div class="step4">
+                    4
+                </div>
+                <div class="step5">
+                    5
+                </div>
+                <div class="step6">
+                    6
+                </div>
+                <div class="step7">
+                    7
+                </div>
+                <div class="step8">
+                    8
+                </div>
+                <div class="step9">
+                    GOAL
+                </div>
+            </div>
+            <div class="chara4">
+                <div class="ken">
+                    <img src="img/enemy.png" alt="">
+                </div>
+                <div id="kgscript" class="script2 none">
+                    <div class="frase">
+                        <p>GRIKO！</p>
+                    </div>
+                </div>
+                <div id="kcscript" class="script2 none">
+                    <div class="frase">
+                        <p>CHOCORATE!</p>
+                    </div>
+                </div>
+                <div id="kpscript" class="script2 none">
+                    <div class="frase">
+                        <p>PAINAPPLE!</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        $(function () {
+            $('#sfg').fadeIn(1500).fadeOut(1500).fadeIn(1500).fadeOut(1500).fadeIn(1500).
+                fadeIn(1500).fadeOut(1500).fadeIn(1500).fadeOut(1500).fadeIn(1500).
+                fadeIn(1500).fadeOut(1500).fadeIn(1500).fadeOut(1500).fadeIn(1500).
+                fadeIn(1500).fadeOut(1500).fadeIn(1500).fadeOut(1500).fadeIn(1500).
+                fadeIn(1500).fadeOut(1500).fadeIn(1500);
+
+            var wincount = 0;
+            var losecount = 0;
+            var parchowin = 0;
+            var parcholose = 0;
+            //ここに処理を追加
+            // グー勝ち
+            $('#gu_btn').on('click', function () {
+                var num = Math.floor(Math.random() * 3 + 1);
+                // １がグー、２がチョキ、３がパー
+
+                if (num == 1) {
+                    console.log('グー');
+                    // $('#chand').text('グー');
+                    $('#chand').html('<img src="img/gu.png" alt="">');
+                    console.log('あいこ')
+                    $('#judgment').html('<img src="img/adraw.png" alt="">');
+                } else if (num == 2) {
+                    console.log('チョキ');
+                    $('#chand').html('<img src="img/ch.png" alt="">');
+                    console.log('勝ち')
+                    wincount++;
+                    $('.step0,.step1,.step2,.step3').css('opacity', '1');
+                    $('#judgment').html('<img src="img/win.png" alt="">');
+                    $('#rgscript').removeClass('none');
+                    $('.ryu').animate({ 'marginLeft': '240px' });
+                    if (parchowin >= 1) {
+                        $('.ryu').animate({ 'marginLeft': '720px' });
+                        $('#rgscript').removeClass('none');
+                        $('#rcscript,#rpscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    } else if (wincount == 2) {
+                        $('.ryu').animate({ 'marginLeft': '480px' });
+                        $('#rgscript').removeClass('none');
+                        $('.step4,.step5,.step6').css('opacity', '1');
+                    } else if (wincount == 3) {
+                        $('.ryu').animate({ 'marginLeft': '720px' });
+                        $('#rgscript').removeClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    } else {
+                    }
+                } else {
+                    console.log('パー');
+                    $('#chand').html('<img src="img/pa.png" alt="">');
+                    console.log('負け')
+                    $('#judgment').html('<img src="img/lose.png" alt="">');
+                    $('.ken').animate({ 'marginLeft': '480px' });
+                    $('#kpscript').removeClass('none');
+                    $('.step0,.step1,.step2,.step3,.step4,.step5,.step6').css('opacity', '1');
+                    losecount++;
+                    parcholose++;
+                    if (losecount == 2) {
+                        $('.ken').animate({ 'marginLeft': '720px' });
+                        $('#kpscript').removeClass('none');
+                        $('#kgscript,#kcscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                        console.log(losecount);
+                    } else if (losecount == 3) {
+                        $('.ken').animate({ 'marginLeft': '720px' });
+                        $('#kpscript').removeClass('none');
+                        $('#kgscript,#kcscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    }
+                    else {
+                    }
+                }
+            });
+
+            $('#cho_btn').on('click', function () {
+                var num = Math.floor(Math.random() * 3 + 1);
+                // １がグー、２がチョキ、３がパー
+                // console.log(num);
+                if (num == 1) {
+                    console.log('グー');
+                    $('#chand').html('<img src="img/gu.png" alt="">');
+                    console.log('負け')
+                    $('#judgment').html('<img src="img/lose.png" alt="">');
+                    $('.ken').animate({ 'marginLeft': '240px' });
+                    $('#kgscript').removeClass('none');
+                    $('.step0,.step1,.step2,.step3').css('opacity', '1');
+                    losecount++;
+                    if (parcholose >= 1) {
+                        $('.ken').animate({ 'marginLeft': '720px' });
+                        $('#kgscript').removeClass('none');
+                        $('#kcscript,#kpscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    } else if (losecount == 2) {
+                        $('.ken').animate({ 'marginLeft': '480px' });
+                        $('#kgscript').removeClass('none');
+                        $('#kcscript,#kpscript').addClass('none');
+                        $('.step4,.step5,.step6').css('opacity', '1');
+                    } else if (losecount == 3) {
+                        $('.ken').animate({ 'marginLeft': '720px' });
+                        $('#kgscript').removeClass('none');
+                        $('#kcscript,#kpscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    }
+                    else {
+                    }
+                } else if (num == 2) {
+                    console.log('チョキ');
+                    $('#chand').html('<img src="img/ch.png" alt="">');
+                    console.log('あいこ')
+                    $('#judgment').html('<img src="img/adraw.png" alt="">');
+                } else {
+                    console.log('パー');
+                    $('#chand').html('<img src="img/pa.png" alt="">');
+                    console.log('勝ち')
+                    $('#judgment').html('<img src="img/win.png" alt="">');
+                    $('#rcscript').removeClass('none');
+                    $('.step0,.step1,.step2,.step3,.step4,.step5,.step6').css('opacity', '1');
+                    wincount++;
+                    parchowin++;
+                    console.log(parchowin);
+                    $('.ryu').animate({ 'marginLeft': '480px' });
+                    if (wincount == 2) {
+                        $('#rcscript').removeClass('none');
+                        $('#rgscript,#rpscript').addClass('none');
+                        $('.ryu').animate({ 'marginLeft': '720px' });
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                        console.log(wincount);
+                    } else if (wincount == 3) {
+                        $('.ryu').animate({ 'marginLeft': '720px' });
+                        $('#rcscript').removeClass('none');
+                        $('#rgscript,#rpscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    }
+                    else {
+                    }
+                }
+            })
+
+            $('#par_btn').on('click', function () {
+                var num = Math.floor(Math.random() * 3 + 1);
+                // １がグー、２がチョキ、３がパー
+                // console.log(num);
+                if (num == 1) {
+                    console.log('グー');
+                    $('#chand').html('<img src="img/gu.png" alt="">');
+                    console.log('勝ち')
+                    $('#judgment').html('<img src="img/win.png" alt="">');
+                    $('#rpscript').removeClass('none');
+                    $('.step0,.step1,.step2,.step3,.step4,.step5,.step6').css('opacity', '1');
+                    wincount++;
+                    parchowin++;
+                    $('.ryu').animate({ 'marginLeft': '480px' });
+                    if (wincount == 2) {
+                        $('.ryu').animate({ 'marginLeft': '720px' });
+                        $('#rpscript').removeClass('none');
+                        $('#rgscript,#rcscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    } else if (wincount == 3) {
+                        $('.ryu').animate({ 'marginLeft': '720px' });
+                        $('#rpscript').removeClass('none');
+                        $('#rgscript,#rcscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    } else {
+                    }
+                } else if (num == 2) {
+                    console.log('チョキ');
+                    $('#chand').html('<img src="img/ch.png" alt="">');
+                    console.log('負け')
+                    $('#judgment').html('<img src="img/lose.png" alt="">');
+                    $('.ken').animate({ 'marginLeft': '480px' });
+                    $('#kcscript').removeClass('none');
+                    $('.step0,.step1,.step2,.step3,.step4,.step5,.step6').css('opacity', '1');
+                    losecount++;
+                    parcholose++;
+                    if (losecount == 2) {
+                        $('.ken').animate({ 'marginLeft': '720px' });
+                        console.log(losecount);
+                        $('#kgscript,#kpscript').addClass('none');
+                        $('#kcscript').removeClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    } else if (losecount == 3) {
+                        $('.ken').animate({ 'marginLeft': '720px' });
+                        $('#kcscript').removeClass('none');
+                        $('#kgscript,#kpscript').addClass('none');
+                        $('.step7,.step8,.step9').css('opacity', '1');
+                    } else {
+
+                    }
+                } else {
+                    console.log('パー');
+                    $('#chand').html('<img src="img/pa.png" alt="">');
+                    console.log('あいこ')
+                    $('#judgment').html('<img src="img/adraw.png" alt="">');
+                }
+            })
+            var gse = $('#gsound');
+            $('#gu_btn').on('click', function () {
+                gse[0].currentTime = 0;
+                gse[0].play();
+            });
+            var cse = $('#csound');
+            $('#cho_btn').on('click', function () {
+                cse[0].currentTime = 0;
+                cse[0].play();
+            });
+            var pse = $('#psound');
+            $('#par_btn').on('click', function () {
+                pse[0].currentTime = 0;
+                pse[0].play();
+            });
+
+        });
+
+    </script>
+    <audio id="gsound" preload="auto">
+        <source src="sound/hadou.wav" type="audio/wav">
+    </audio>
+    <audio id="csound" preload="auto">
+        <source src="sound/shouryu.wav" type="audio/wav">
+    </audio>
+    <audio id="psound" preload="auto">
+        <source src="sound/tatumaki.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto" autoplay>
+        <source src="sound/op.mp3" type="audio/mp3">
+    </audio>
+    <iframe src="sound/op.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+</body>
+
+</html>

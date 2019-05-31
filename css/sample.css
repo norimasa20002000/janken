@@ -1,0 +1,204 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+    max-width: 960px;
+    background:black;
+}
+header{
+    background:black;
+    text-align: center;
+}
+main{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.you{
+    background-color:black;
+    text-align: center;
+}
+.chara1 img,.chara2 img{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+}
+.hhand{
+    display:flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.rhand{
+    width:300px;
+}
+.khand{
+    width:180px;
+    margin-left:60px;
+}
+.rhand img{
+    width:100%;
+}
+.khand img{
+    width:100%;
+}
+.select-hand img{
+    width:80px;
+    height:80px;
+    opacity:0.3;
+    border-radius:50%;
+}
+.select-hand img:hover{
+    opacity:1;
+}
+
+#cho_btn{
+    margin:0 10px;
+}
+.result{
+    background:black;
+    width:150px;
+}
+.result-logo img{
+    width:100%;
+}
+#judgment img{
+    width:100%;
+}
+.enemy{
+    background:black;
+    text-align: center;
+    width:300px;
+    height:332px;
+}
+
+/* shake */
+@keyframes shake
+{
+  from{
+    transform: translateX(-5px) translateY(0px);
+  }
+  
+  20%{
+    transform: translateX(5px) translateY(0px);
+  }
+  
+  40%{
+    transform: translateX(-10px) translateY(-3px);
+  }
+  
+  60%{
+    transform: translateX(10px) translateY(0px);
+  }
+  
+  80%{
+    transform: translateX(-10px) translateY(0px);
+  }
+  
+  to{
+    transform: translateX(-5px) translateY(0px);
+  }
+}
+
+#chand{
+    width:80px;
+    height:80px;
+    margin-left:110px;
+    margin-bottom:12px;
+}
+#chand img{
+    width:100%;
+    border-radius:50%;
+}
+
+footer{
+    background-color:black;
+}
+
+
+
+/* グリコパート */
+.griko{
+    padding-left:45px;
+}
+.chara3 img,.chara4 img{
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+}
+.chara4{
+    padding-top:12px;
+}
+/* グリコ道 */
+.stairs{
+    display:flex;
+}
+.step0,.step1,.step2,.step3,.step4,.step5,
+.step6,.step7,.step8,.step9{
+    width:76px;
+    height:40px;
+    font-size:16px;
+    text-align:center;
+    line-height: 40px;
+    background:grey;
+    border:solid 2px black;
+    color:white;
+    border-radius: 5px;
+    font-weight: bold;
+    opacity:0.3;
+}
+/* KENRYU吹き出し */
+    
+/* 吹き出し色形 */
+.chara3,.chara4{
+  width: 100%;
+	/* overflow: hidden; */
+	display:flex;
+}
+.script {
+  color:white;
+  font-size:14px;
+  font-weight: bold;
+  display: inline-block;
+  position: relative; 
+  margin-left:15px;
+  padding: 7px 7px;
+  border-radius: 12px;
+  background: red;
+  height:40px;
+}
+.script:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid red;
+}
+.script2 {
+  color:white;
+  font-size:14px;
+  font-weight: bold;
+  display: inline-block;
+  position: relative; 
+  margin-left:15px;
+  padding: 7px 7px;
+  border-radius: 12px;
+  background: blue;
+  height:40px;
+}
+.script2:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid blue;
+}
+
+.none{
+    display:none;
+}
